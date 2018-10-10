@@ -27,6 +27,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        displayEvents()
+        
         
         self.firstEvent.layer.cornerRadius = 3
         self.secondEvent.layer.cornerRadius = 3
@@ -52,7 +54,71 @@ class ViewController: UIViewController {
         
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
+    var eventsForRound = GameManager().pickEventsForRound(shuffledEvents: GameManager().shuffleEvents())
+    
+    func displayEvents() {
+        questionText.text = "Which of these 90's number one hits came first?"
+        firstEvent.text = eventsForRound.eventOne.description
+        secondEvent.text = eventsForRound.eventTwo.description
+        thirdEvent.text = eventsForRound.eventThree.description
+        fourthEvent.text = eventsForRound.eventFour.description
+        
+        
+    }
+    
+    
+    @IBAction func moveDown(_ sender: UIButton) {
+     let newEventTwo = eventsForRound.eventOne
+     let newEventOne = eventsForRound.eventTwo
+        
+     eventsForRound.eventOne = newEventOne
+     eventsForRound.eventTwo = newEventTwo
+        
+        
+    firstEvent.text = eventsForRound.eventOne.description
+    secondEvent.text = eventsForRound.eventTwo.description
+        
+    }
+    
+    
+    @IBAction func moveUp(_ sender: UIButton) {
+   
+        let newEventTwo = eventsForRound.eventOne
+        let newEventOne = eventsForRound.eventTwo
+        
+        eventsForRound.eventOne = newEventOne
+        eventsForRound.eventTwo = newEventTwo
+        
+        
+        firstEvent.text = eventsForRound.eventOne.description
+        secondEvent.text = eventsForRound.eventTwo.description
+        
+    
+    }
 
+    
+    
 
+    
+    @IBAction func moveDownEventThree(_ sender: Any) {
+        
+        let newEventFour = eventsForRound.eventThree
+        let newEventThree = eventsForRound.eventFour
+        
+        eventsForRound.eventThree = newEventThree
+        eventsForRound.eventFour = newEventFour
+        
+        
+        thirdEvent.text = eventsForRound.eventThree.description
+        fourthEvent.text = eventsForRound.eventFour.description
+    }
+    
+    
+    
+    
+    
+    
+    
 }
 

@@ -63,11 +63,6 @@ struct AllEvents {
                 Event(description : "Christina Aguilera, Genie in a Bottle" , date : DateComponents(year: 1999, month: 10, day: 16 )),
         
     ]
- 
-    func shuffleEvents() -> [Event] {
-        let shuffledEvents = events.shuffled()
-        return shuffledEvents
-    
-}
+
 
 }
