@@ -26,9 +26,12 @@ class GameManager {
         return eventsForRound
     }
     
+    /*func checkOrder(ofEventsUsedInRound events: EventsForRound) -> Bool {
+        if events.eventOne.date < events.eventTwo.date && events.eventTwo.date < events.eventThree.date && events.eventThree.date < events.eventFour.date {return true}
+        else {return false}
+    }
     
-    
-    
+    */
         
 }
 
