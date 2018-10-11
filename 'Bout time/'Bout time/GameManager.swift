@@ -12,10 +12,9 @@ struct EventsForRound {
 class GameManager {
     var roundNumber: Int = 0
     var runningScore: Int = 0
-    let eventsPerRound = 4
     let totalNumberOfRounds = 6
-    let secondsForTimer = 10
     let allEvents = AllEvents()
+    
     
     func shuffleEvents() -> [Event] {
         let shuffledEvents = allEvents.events.shuffled()
@@ -59,7 +58,7 @@ class GameManager {
                 threeBeforeFour = try checkOrderOfTwoDates(isDate: events.eventThree.date, before: events.eventFour.date)
                 return oneBeforeTwo && twoBeforeThree && threeBeforeFour
     }
-           //fix error handling here
+           
             catch {return false}
 
         

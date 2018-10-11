@@ -1,15 +1,12 @@
-//
-//  CHANGE TIMER TO 60 SECONDS
-//fix timer
-// fix error throwing
-//add safari view controller
-
 
 import UIKit
+import SafariServices
+
 let gameManager = GameManager()
 
 class ViewController: UIViewController {
 
+    
     @IBOutlet weak var questionText: UILabel!
     
     @IBOutlet weak var firstEvent: UILabel!
@@ -52,12 +49,12 @@ class ViewController: UIViewController {
         self.thirdButtonDown.layer.cornerRadius = 3
         self.fourthButton.layer.cornerRadius = 3
         
-        // Do any additional setup after loading the view, typically from a nib.
+
     }
     
     var eventsForRound = gameManager.pickEventsForRound(shuffledEvents: gameManager.shuffleEvents())
     
-    func displayEvents() {
+     func displayEvents() {
         
         questionText.text = "In what order did these 90's hits reach number one?"
         
@@ -69,7 +66,7 @@ class ViewController: UIViewController {
         thirdEvent.text = eventsForRound.eventThree.description
         fourthEvent.text = eventsForRound.eventFour.description
         
-        timerLabel.text = "X:X"
+        timerLabel.text = "01:00"
         
         nextRoundSuccess.isHidden = true
         nextRoundFailure.isHidden = true
@@ -77,12 +74,42 @@ class ViewController: UIViewController {
         finalScore.isHidden = true
         score.isHidden = true
         playAgain.isHidden = true
+    
+        startTimer()
+    }
+    
+    var countdownTimer: Timer!
+    var totalTime = 0
+    
+    func startTimer() {
+        totalTime = 60
+        countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateTime() {
+        timerLabel.text = "\(timeFormatted(totalTime))"
         
-       // timer(seconds: gameManager.secondsForTimer)
-        
+        if totalTime != 0 {
+            totalTime -= 1
+        } else {
+            endTimer()
+            checkAnswer()
+        }
+    }
+    
+    func endTimer() {
+        countdownTimer.invalidate()
+    }
+    
+    func timeFormatted(_ totalSeconds: Int) -> String {
+        let seconds: Int = totalSeconds % 60
+        let minutes: Int = (totalSeconds / 60) % 6
+        return String(format: "%02d:%02d", minutes, seconds)
     }
     
     
+    
+
     func checkAnswer() {
         shakeToCompleteLabel.isHidden = true
         timerLabel.isHidden = true
@@ -102,16 +129,7 @@ class ViewController: UIViewController {
        
     }
     
-    func timer(seconds: Int) {
-        // Converts a delay in seconds to nanoseconds as signed 64 bit integer
-        let delay = Int64(NSEC_PER_SEC * UInt64(seconds))
-        // Calculates a time value to execute the method given current time and delay
-        let dispatchTime = DispatchTime.now() + Double(delay) / Double(NSEC_PER_SEC)
-        // Executes the nextRound method at the dispatch time on the main queue
-        DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
-            self.checkAnswer()
-        }
-    }
+   
     
     func nextRound() {
         if gameManager.roundNumber == gameManager.totalNumberOfRounds {
@@ -241,6 +259,11 @@ class ViewController: UIViewController {
     }
     
     
+    @IBAction func linkToTheWeb(_ sender: Any) {
+        
+        let svc = SFSafariViewController(url: URL(string: "https://en.wikipedia.org/wiki/List_of_UK_Singles_Chart_number_ones_of_the_1990s")!)
+        self.present(svc, animated: true, completion: nil)
+    }
     
 
     override var canBecomeFirstResponder: Bool{
@@ -255,7 +278,8 @@ class ViewController: UIViewController {
         _ motion: UIEvent.EventSubtype, with Event: UIEvent?)
     {
         if motion == .motionShake {
-          self.checkAnswer()
+            endTimer()
+            checkAnswer()
         }
     
     
