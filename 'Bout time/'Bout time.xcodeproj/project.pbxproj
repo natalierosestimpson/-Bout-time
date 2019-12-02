@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8B9C7967216CB9DF002955A6 /* 'Bout time.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "'Bout time.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B9C7967216CB9DF002955A6 /* GoOrderless.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoOrderless.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B9C796A216CB9DF002955A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B9C796C216CB9DF002955A6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8B9C796F216CB9DF002955A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -50,7 +50,7 @@
 		8B9C7968216CB9DF002955A6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8B9C7967216CB9DF002955A6 /* 'Bout time.app */,
+				8B9C7967216CB9DF002955A6 /* GoOrderless.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -87,7 +87,7 @@
 			);
 			name = "'Bout time";
 			productName = "'Bout time";
-			productReference = 8B9C7967216CB9DF002955A6 /* 'Bout time.app */;
+			productReference = 8B9C7967216CB9DF002955A6 /* GoOrderless.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -298,7 +298,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "n.a.-Bout-time";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GoOrderless;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -316,7 +316,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "n.a.-Bout-time";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GoOrderless;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

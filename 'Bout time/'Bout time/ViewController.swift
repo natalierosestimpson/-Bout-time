@@ -56,7 +56,7 @@ class ViewController: UIViewController {
     
      func displayEvents() {
         
-        questionText.text = "In what order did these 90's hits reach number one?"
+        questionText.text = "In what order did GC hit these milestones?"
         
         timerLabel.isHidden = false
         shakeToCompleteLabel.isHidden = false
@@ -171,7 +171,7 @@ class ViewController: UIViewController {
     score.isHidden  = false
     playAgain.isHidden = false
         
-        questionText.text = "Way to go! You scored:"
+        questionText.text = ""
         score.text = "\(gameManager.runningScore)/\(gameManager.totalNumberOfRounds)"
 
     }
@@ -261,7 +261,7 @@ class ViewController: UIViewController {
     
     @IBAction func linkToTheWeb(_ sender: Any) {
         
-        let svc = SFSafariViewController(url: URL(string: "https://en.wikipedia.org/wiki/List_of_UK_Singles_Chart_number_ones_of_the_1990s")!)
+        let svc = SFSafariViewController(url: URL(string: "https://gocardless.com/")!)
         self.present(svc, animated: true, completion: nil)
     }
     

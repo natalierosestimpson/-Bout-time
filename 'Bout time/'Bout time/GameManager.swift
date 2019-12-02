@@ -12,7 +12,7 @@ struct EventsForRound {
 class GameManager {
     var roundNumber: Int = 0
     var runningScore: Int = 0
-    let totalNumberOfRounds = 6
+    let totalNumberOfRounds = 3
     let allEvents = AllEvents()
     
     
